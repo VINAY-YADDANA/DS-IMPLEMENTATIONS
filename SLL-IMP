@@ -1,0 +1,129 @@
+/******************************************************************************
+SINGLE LINKED LIST IMPLEMENTATION
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+    int data;
+    struct node* link;     
+};
+struct node* root=NULL;
+int len;
+void append(void);
+void addatbegin(void);
+void addatend(void);
+int length(void);
+void display(void);
+void delete(void);
+
+
+void main()
+{   
+    int ch;
+    while(1)
+    {
+        printf("Single linked list operations!\n");
+        printf("1.Append\n");
+        printf("2.Add at begin\n");
+        printf("3.Add at end\n");
+        printf("4.Length\n");
+        printf("5.Display nodes\n");
+        printf("6.Delete a node\n");
+        printf("7.Quit\n");
+        
+        printf("Enter your choice:");
+        scanf("%d",&ch);
+        
+        switch(ch)
+        {
+            case 1: append();
+                    break;
+            case 2: addatbegin();
+                    break;
+            case 3: addatend();
+                    break;
+            case 4: len = length();
+                    printf("length of Single linked list is:%d\n\n",len);
+                    break;
+            case 5: display();
+                    break;
+            case 6: delete();
+                    break;
+            case 7: exit(1);
+            
+            default: printf("Invalid input\n");
+        }
+    }
+}
+void append()
+{
+   struct node* temp;
+   
+   temp=(struct node*)malloc(sizeof(struct node));
+   
+   printf("Enter node data:");
+   scanf("%d",&temp->data);
+   temp->link=NULL;
+   if(root==NULL)
+   {
+        root=temp;
+   }
+   else
+   {
+        struct node* p;
+        
+        p=root;
+        
+        while(p->link!=NULL)
+        {
+            p=p->link;
+        }
+        
+        p->link=temp;
+   }
+    
+}
+
+int length()
+{
+    int count=0;
+    struct node* temp;
+    temp=root;
+    
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->link;
+    }
+    
+    return count;
+}
+
+void display()
+{   struct node* temp;
+    temp=root;
+    if(temp==NULL)
+    {
+      printf("No Nodes to display\n");  
+    }
+    while(temp!=NULL)
+    {
+        printf("%d-->",temp->data);
+        temp = temp->link;
+    }
+}
+
+void addatbegin(void)
+{
+    
+}
+void addatend(void)
+{
+    
+}
+void delete(void)
+{
+    
+}
