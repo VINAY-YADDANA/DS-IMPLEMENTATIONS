@@ -12,8 +12,8 @@ struct node
 struct node* root=NULL;
 int len;
 void append(void);
-void addatbegin(void);
-void addatend(void);
+void insert(void);
+/*void addatend(void);*/
 int length(void);
 void display(void);
 void delete(void);
@@ -26,8 +26,8 @@ void main()
     {
         printf("Single linked list operations!\n");
         printf("1.Append\n");
-        printf("2.Add at begin\n");
-        printf("3.Add at end\n");
+        printf("2.Insert at location:\n");
+       /* printf("3.Add at end\n"); */
         printf("4.Length\n");
         printf("5.Display nodes\n");
         printf("6.Delete a node\n");
@@ -40,10 +40,10 @@ void main()
         {
             case 1: append();
                     break;
-            case 2: addatbegin();
+            case 2: insertat();
                     break;
-            case 3: addatend();
-                    break;
+            /*case 3: addatend();
+                    break;*/
             case 4: len = length();
                     printf("length of Single linked list is:%d\n\n",len);
                     break;
@@ -115,14 +115,42 @@ void display()
     }
 }
 
-void addatbegin(void)
+void insertat(void)
 {
+    int loc,len,i=1;
+    struct node *temp,*p;
+    printf("Enter location where to insert:");
+    scanf("%d",&loc);
+    len=length();
+    if(loc>len)
+    {
+        printf("Entered location is out of Single linked list boundary i.e:%d",len);
+    }
+    else
+    {   
+        p=root;
+        while(i<loc)
+        {
+            p=p->link;
+            i++;
+        }
+        temp=(struct node*)malloc(sizeof(struct node));
+        printf("Enter data for new node:");
+        scanf("%d",&temp->data);
+        temp->link=NULL;
+       // temp=p;
+        temp->link=p->link;
+        p->link=temp;
+        
+    }
+    
+    
     
 }
-void addatend(void)
+/*void addatend(void)
 {
     
-}
+}*/
 void delete(void)
 {
     struct node* temp;
