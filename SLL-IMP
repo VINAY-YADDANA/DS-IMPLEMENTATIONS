@@ -125,5 +125,37 @@ void addatend(void)
 }
 void delete(void)
 {
+    struct node* temp;
+    int loc;
+    printf("Enter location to delete node:");
+    scanf("%d",&loc);
+    if(loc>length())
+    {
+        printf("Invalid location\n");
+    }
+    else if(loc=1)
+    {
+        temp=root;
+        root=temp->link;
+        temp->link=NULL;
+        free(temp);
+    }
+    else
+    {
+        struct node *p,*q;
+        int i=1;
+        p=root;
+        while(i<loc-1)
+        {
+            p=p->link;
+            i++;
+        }
+        q=p->link;
+        p->link=q->link;
+        q->link=NULL;
+        free(q);
+        
+    }
+
     
 }
